@@ -37,8 +37,6 @@ export function DemoView({ cameraOrbit, src, alt, downloadFile }: Props) {
           shadow-intensity="1.0"
           exposure="0.25"
           camera-orbit={cameraOrbit}
-          ar
-          ar-scale="fixed"
         >
           {/* @ts-expect-error */}
         </model-viewer>
@@ -64,6 +62,7 @@ const Demo = styled.div`
   model-viewer {
     width: 100%;
     height: 100%;
+    --progress-bar-color: #eeeeee;
   }
 
   @media only screen and (max-width: 600px) {

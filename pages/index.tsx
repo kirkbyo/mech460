@@ -39,6 +39,20 @@ const IndexPage = () => (
         Team 24: Andy Le, Artiom Lisin, Jessie Preteroti, Ozzie Kirkby, Angelo Lu
       </Heading>
     </Stack>
+    <Text>
+      The device will operate while fully submerged beneath the ice formation to avoid positional
+      interferences. The device can be activated using a remotely transmitted acoustic signal and
+      resurface by releasing a tethered, buoyant section of the device. This section will carry a
+      microcontroller-based system with a GPS receiver and a point to point transponder to the
+      surface. A handheld transponder can then be used to read where the device has surfaced,
+      allowing for retrieval.
+    </Text>
+    <DemoView
+      src="/assembled-design.glb"
+      alt="CAD of the assembled mechanism"
+      cameraOrbit="90deg 75deg 2m"
+      downloadFile="/assembled-design.iges"
+    />
     <Divider marginTop="8pt" />
     <Box>
       <Heading as="h2" size="md" marginTop="8pt">
