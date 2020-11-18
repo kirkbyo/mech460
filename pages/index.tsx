@@ -1,6 +1,6 @@
 import * as React from "react";
 import Head from "next/head";
-import { Stack, Heading, Box, Text, Divider, Link, Image } from "@chakra-ui/react";
+import { Stack, Heading, Box, Text, Divider, Link, Image, Grid, Tag } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import Layout from "../components/Layout";
@@ -47,11 +47,50 @@ const IndexPage = () => (
       surface. A handheld transponder can then be used to read where the device has surfaced,
       allowing for retrieval.
     </Text>
+    <Grid templateColumns="repeat(auto-fit, minmax(320px, 1fr))" gap={0} margin="16pt 0">
+      <Stack align="center">
+        <Stack textAlign="center">
+          <Box>
+            <Tag colorScheme="orange">Operating Mode</Tag>
+          </Box>
+          <Text fontSize="xs" color="gray.500" height="28pt">
+            The device and payload are deployed underwater and left for up to a year.
+          </Text>
+        </Stack>
+        <Image
+          src="/figures/sketch-operating-mode.png"
+          alt="Sketch of the system in operating mode"
+          height="500px"
+        />
+      </Stack>
+      <Stack align="center">
+        <Stack textAlign="center">
+          <Box>
+            <Tag colorScheme="green">Recovery Mode</Tag>
+          </Box>
+          <Text fontSize="xs" color="gray.500" height="28pt">
+            The remote actuator has received a signal, triggering the release mechanism. The spooled
+            is then undone, and the passive buoyant top floats to the surface.
+          </Text>
+        </Stack>
+        <Image
+          src="/figures/sketch-recovery-mode.png"
+          alt="Sketch of the system in recovery mode"
+          height="500px"
+        />
+      </Stack>
+    </Grid>
+    <Text margin="32pt 0">
+      These sketches were then developed into the design below. The frame will be constructed of PVC
+      due to its buoyancy capabilities when sealed with air and low-cost factor. Some of the design
+      considerations and analyses are listed below.
+    </Text>
     <DemoView
       src="/assembled-design.glb"
       alt="CAD of the assembled mechanism"
       cameraOrbit="-70deg 60deg 2m"
       downloadFile="/assembled-design.iges"
+      customHeight="700px"
     >
       <button
         className="annotation-marker"

@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 type Props = {
   src: string;
   alt: string;
+  customHeight: string;
   cameraOrbit: string;
   downloadFile: string;
   autoRotate?: boolean;
@@ -14,6 +15,7 @@ type Props = {
 
 export const DemoView: React.FC<Props> = ({
   cameraOrbit,
+  customHeight,
   src,
   alt,
   downloadFile,
@@ -28,7 +30,7 @@ export const DemoView: React.FC<Props> = ({
 
   return (
     <Box>
-      <Demo>
+      <Demo height={customHeight}>
         <ShowAnnotationsContainer>
           {children ? (
             <Button
@@ -88,9 +90,9 @@ const ShowAnnotationsContainer = styled.div`
   z-index: 100;
 `;
 
-const Demo = styled.div`
+const Demo = styled.div<{ height?: string }>`
   position: relative;
-  height: 400px;
+  height: ${({ height }) => height ?? "400px"};
   width: 80%;
   margin: 0 auto;
 
