@@ -11,11 +11,12 @@ type Props = {
 const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-  max-width: 1400px;
+  max-width: 1000px;
   position: relative;
   box-sizing: border-box;
   padding: 24pt;
   margin: 0 auto;
+  background-color: white;
 `;
 
 const Footer = styled.footer`
@@ -37,12 +38,10 @@ const Layout = ({ children, title, description }: Props) => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     <header>
-      <nav>
-      </nav>
+      <nav></nav>
     </header>
     <Content>{children}</Content>
-    <Footer>
-    </Footer>
+    <Footer></Footer>
   </Container>
 );
 
