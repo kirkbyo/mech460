@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 type Props = {
   src: string;
   alt: string;
-  customHeight: string;
+  customHeight?: string | undefined;
   cameraOrbit: string;
   downloadFile: string;
   autoRotate?: boolean;
@@ -15,10 +15,10 @@ type Props = {
 
 export const DemoView: React.FC<Props> = ({
   cameraOrbit,
-  customHeight,
   src,
   alt,
   downloadFile,
+  customHeight = undefined,
   autoRotate = true,
   children,
 }: Props) => {
