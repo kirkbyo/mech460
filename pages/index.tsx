@@ -50,9 +50,50 @@ const IndexPage = () => (
     <DemoView
       src="/assembled-design.glb"
       alt="CAD of the assembled mechanism"
-      cameraOrbit="90deg 75deg 2m"
+      cameraOrbit="-70deg 60deg 2m"
       downloadFile="/assembled-design.iges"
-    />
+    >
+      <button
+        className="annotation-marker"
+        slot="hotspot-buoyant-top"
+        data-position="-0.35 0.65 0"
+        data-normal="-0.73 0.05 0.69"
+      >
+        <div className="annotation">Passive Buoyant Top</div>
+      </button>
+      <button
+        className="annotation-marker"
+        slot="hotspot-transponder"
+        data-position="0.35 0.62 0"
+        data-normal="-0.73 0.05 0.69"
+      >
+        <div className="annotation">Remote Activation Transponder</div>
+      </button>
+      <button
+        className="annotation-marker"
+        slot="hotspot-release"
+        data-position="0 0.4 0"
+        data-normal="-0.73 0.05 0.69"
+      >
+        <div className="annotation">Release Mechanism</div>
+      </button>
+      <button
+        className="annotation-marker"
+        slot="hotspot-payload"
+        data-position="0 0.05 0"
+        data-normal="-0.73 0.05 0.69"
+      >
+        <div className="annotation">Payload</div>
+      </button>
+      <button
+        className="annotation-marker"
+        slot="hotspot-anchor"
+        data-position="0 -0.4 0"
+        data-normal="-0.73 0.05 0.69"
+      >
+        <div className="annotation">Anchor</div>
+      </button>
+    </DemoView>
     <Divider marginTop="8pt" />
     <Box>
       <Heading as="h2" size="md" marginTop="8pt">
@@ -62,11 +103,18 @@ const IndexPage = () => (
         <Heading size="sm" as="h2">
           Release Mechanism
         </Heading>
+        <Text>
+          The release mechanism contains 100 m of braided rope spooled onto a rotating shaft. The
+          shaft rotation is locked by a ratchet wheel and a pawl before deployment. Upon deployment,
+          a waterproof servo motor will rotate the pawl to unlock the shaft; releasing the spooled
+          rope.
+        </Text>
         <DemoView
           src="/release-mechanism.glb"
           alt="CAD of the release mechanism"
           cameraOrbit="90deg 75deg 0.35m"
           downloadFile="/release-mechanism.IGS"
+          autoRotate={false}
         />
       </Box>
       <Box marginTop="16pt">
@@ -77,7 +125,7 @@ const IndexPage = () => (
           <Text>
             Two designs of the electronics were considered. The original design uses a HC-12 for
             surface communication and an ATmega328P microcontroller (MCU) for logic. The revised
-            design uses a RFM96 for surface communication and an ATmega32u4 MCU; conveniently,
+            design uses a RFM96 for surface communication and an ATmega32u4 MCU. Conveniently,
             Adafruit sells a board that integrates both chips on a single prototyping board.
           </Text>
           <Text>
@@ -144,19 +192,22 @@ const IndexPage = () => (
         <Heading as="h3" size="sm">
           Battery Monitoring
         </Heading>
-        <Text>
-          The voltage of a lithium polymer battery (LiPo) relates to the remaining discharge
-          capacity of the battery through a known, temperature-dependent discharge profile. By
-          monitoring the voltage of the battery, we can turn off the recovery mode electronics when
-          the battery near empty to prevent damaging the LiPo through over-discharging.
-        </Text>
-        <Text>
-          A single LiPo cell is usually designed to operate safely between 3-4.2 V. A 3 cell (3s)
-          LiPo battery, which the circuit was designed for, therefore operates between 9-12.6 V.
-          Using a voltage divider made of two resistors, we can create an output that in the
-          supported range of the MCU’s analog to digital converters (ADC), 3.3 V in this case. To be
-          safe, we will use a maximum V_in of 13 V so we can detect unsafe over-volt conditions.
-        </Text>
+        <Stack>
+          <Text>
+            The voltage of a lithium polymer battery (LiPo) relates to the remaining discharge
+            capacity of the battery through a known, temperature-dependent discharge profile. By
+            monitoring the voltage of the battery, we can turn off the recovery mode electronics
+            when the battery near empty to prevent damaging the LiPo through over-discharging.
+          </Text>
+          <Text>
+            A single LiPo cell is usually designed to operate safely between 3-4.2 V. A 3 cell (3s)
+            LiPo battery, which the circuit was designed for, therefore operates between 9-12.6 V.
+            Using a voltage divider made of two resistors, we can create an output that in the
+            supported range of the MCU’s analog to digital converters (ADC), 3.3 V in this case. To
+            be safe, we will use a maximum V_in of 13 V so we can detect unsafe over-volt
+            conditions.
+          </Text>
+        </Stack>
         <Stack isInline align="center" justify="center" spacing="8">
           <LatexEquation
             equation="V_{out} = V_{in} \times \frac{R_2}{R_1 + R_2} \rightarrow R_1 = 2.93 R_2"
