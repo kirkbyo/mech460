@@ -1,6 +1,17 @@
 import * as React from "react";
 import Head from "next/head";
-import { Stack, Heading, Box, Text, Divider, Link, Image, Grid, Tag } from "@chakra-ui/react";
+import {
+  Stack,
+  Heading,
+  Box,
+  Text,
+  Divider,
+  Link,
+  Image,
+  Grid,
+  Tag,
+  Button,
+} from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import Layout from "../components/Layout";
@@ -31,6 +42,13 @@ const IndexPage = () => (
         crossOrigin="anonymous"
       />
     </Head>
+    <Box align="right">
+      <Link href="/poster">
+        <Button size="sm" variant="ghost" colorScheme="blue">
+          Final Design
+        </Button>
+      </Link>
+    </Box>
     <Stack padding="16pt 0">
       <Heading size="lg" as="h1" fontFamily="georgia,serif">
         Underwater Retrieval System
@@ -292,8 +310,8 @@ const IndexPage = () => (
         <Text paddingBottom="4pt">
           Since the payload sensor might not be buoyant, it will be held within a buoyant frame.
           This frame&apos;s size was then decided based on a buoyancy model derived from a force
-          balance. Assuming that side will be a rectangular cuboid, the following model was able to
-          be developed:
+          balance. Assuming that it will be a rectangular cuboid, the following model was able to be
+          developed:
         </Text>
         <LatexEquation equation={FrameModel} display={true} />
         <Text paddingTop="4pt">
